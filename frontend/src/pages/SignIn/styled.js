@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PageArea = styled.div`
-    margin-bottom: 30px;
+    margin-bottom: 130px;
 
     form {
         background-color: #FFF;

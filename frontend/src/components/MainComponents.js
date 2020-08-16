@@ -21,3 +21,12 @@ export const ErrorMessage = styled.div`
     border: 2px solid #FF0000;
     border-radius: 3px;
 `;
+
+export const AvisoMessage = styled.div`
+    margin: 10px 0;
+    padding: 10px;
+    background-color: antiquewhite;
+    color: darkslategrey;
+    border: 2px solid darkslategrey;
+    border-radius: 3px;
+`;

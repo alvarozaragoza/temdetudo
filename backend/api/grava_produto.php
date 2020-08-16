@@ -1,7 +1,7 @@
 <?php
-    //grava_produtos.php
+    //grava_produto.php
     //grava um novo produto na tabela produtos quando id=novo
-    //ou altera os dados com informado o ID do produto
+    //ou altera os dados com o ID informado produto
 
     require("config.php");
 

@@ -7,7 +7,8 @@ export default (props) => {
     dadosCliente = `${props.data.endereco} :: ${props.data.telefone}`;
 
     let valor = '';
-    valor = `${props.data.total_vendido}`;
+    valor = props.data.total_vendido;
+    valor = valor!=null ? valor : "0.00";
     valor = valor.replace(".",",");
     valor = `R$ ${valor}`;
     

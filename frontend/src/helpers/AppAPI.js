@@ -27,55 +27,6 @@ const apiFetchPost = async (endpoint, body) => {
 
     return json;
 }
-/*
-const apiFetchPost = async (endpoint, body) => {
-    if(!body.token) {
-        let token = Cookies.get('token');
-        if(token) {
-            body.token = token;
-        }
-    }
-    console.log(body);
-    let form_data = new FormData();
-    for ( let key in body ) {
-        form_data.append(key, body[key]);
-    }
-    console.log(form_data);
-
-    const res = await fetch(BASEAPI+endpoint, {
-        method:'POST',
-        data: form_data
-    });
-    const json = await res.json();
-
-    if(json.notallowed) {
-        window.location.href = '/signin';
-        return;
-    }
-
-    return json;
-}
-*/
-
-/*
-const apiFetchGet = async (endpoint, body = []) => {
-    if(!body.token) {
-        let token = Cookies.get('token');
-        if(token) {
-            body.token = token;
-        }
-    }
-    const res = await fetch(`${BASEAPI+endpoint}?${qs.stringify(body)}`);
-    const json = await res.json();
-
-    if(json.notallowed) {
-        window.location.href = '/signin';
-        return;
-    }
-
-    return json;
-}
-*/
 
 const apiFetchGet = async (endpoint, comParam = false, body = []) => {
     if(!body.token) {
@@ -163,6 +114,14 @@ const AppAPI = {
         return json;
     },
 
+    getVendasItens: async (id_venda) => {
+        const json = await apiFetchGet(
+            '/lista_vendas_itens.php?id_venda='+id_venda,
+            true // comParam
+        );
+        return json;
+    },
+
     getVendaID: async (id) => {
         const json = await apiFetchGet(
             '/venda.php?id='+id,
@@ -171,24 +130,54 @@ const AppAPI = {
         return json;
     },
 
-    gravavenda:async (id, data, id_cliente, id_vendedor) => {
+    gravavenda:async (id_venda, data, id_cliente, id_vendedor) => {
         const json = await apiFetchPost(
             '/grava_venda.php',
-            {id, data, id_cliente, id_vendedor}
+            {id_venda, data, id_cliente, id_vendedor}
         );
         return json;
     },
 
-    excluivenda:async (id) => {
+    excluivenda:async (id_venda) => {
         const json = await apiFetchPost(
             '/exclui_venda.php',
+            {id_venda}
+        );
+        return json;
+    },
+
+    gravacliente:async (nome, telefone, endereco) => {
+        const json = await apiFetchPost(
+            '/grava_cliente.php',
+            {nome, telefone, endereco}
+        );
+        return json;
+    },
+
+    gravavendedor:async (nome) => {
+        const json = await apiFetchPost(
+            '/grava_vendedor.php',
+            {nome}
+        );
+        return json;
+    },
+    
+    gravaitemvenda:async (id_venda, id_produto, qtde, preco) => {
+        const json = await apiFetchPost(
+            '/grava_item_venda.php',
+            {id_venda, id_produto, qtde, preco}
+        );
+        return json;
+    },
+
+    excluiitemvenda:async (id) => {
+        const json = await apiFetchPost(
+            '/exclui_item_venda.php',
             {id}
         );
         return json;
-    },
-
+    }
     
-
 };
 
 export default () => AppAPI;

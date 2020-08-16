@@ -1,7 +1,7 @@
 <?php
-    //grava_produtos.php
-    //grava um novo produto na tabela produtos quando id=novo
-    //ou altera os dados com informado o ID do produto
+    //grava_venda.php
+    //grava uma nova venda na tabela vendas quando id=novo
+    //ou altera os dados com o ID informado da venda
 
     require("config.php");
 
@@ -9,44 +9,32 @@
 
     if($method === "post") {  
 
-        $id = filter_input( INPUT_POST, 'id');
-        $nome = filter_input( INPUT_POST, 'nome');
-        $descricao = filter_input( INPUT_POST, 'descricao');
-        $marca = filter_input( INPUT_POST, 'marca');
-        $fornecedor = filter_input( INPUT_POST, 'fornecedor');
-        $classificacao = filter_input( INPUT_POST, 'classificacao');
-        $preco_custo = filter_input( INPUT_POST, 'preco_custo');
-        $preco_venda = filter_input( INPUT_POST, 'preco_venda');
-        $qtde_estoque = filter_input( INPUT_POST, 'qtde_estoque');
-        $qtde_loja = filter_input( INPUT_POST, 'qtde_loja');
-
-        if(!($nome && $descricao)) {
+        $id = filter_input( INPUT_POST, 'id_vemda');
+        $data = filter_input( INPUT_POST, 'data');
+        $id_cliente = filter_input( INPUT_POST, 'id_cliente');
+        $id_vendedor = filter_input( INPUT_POST, 'id_vendedor');
+        
+        if(!($id && $data)) {
             //verifica se vieram em JSON
             //print_r( file_get_contents('php://input') );
             //die;
 
             $json_str = file_get_contents('php://input');
             $json_obj = json_decode($json_str);
-            $id = $json_obj->id;
-            $nome = $json_obj->nome;
-            $descricao = $json_obj->descricao;
-            $marca = $json_obj->marca;
-            $fornecedor = $json_obj->fornecedor;
-            $classificacao = $json_obj->classificacao;
-            $preco_custo = $json_obj->preco_custo;
-            $preco_venda = $json_obj->preco_venda;
-            $qtde_estoque = $json_obj->qtde_estoque;
-            $qtde_loja = $json_obj->qtde_loja;
+            $id = $json_obj->id_venda;
+            $data = $json_obj->data;
+            $id_cliente = $json_obj->id_cliente;
+            $id_vendedor = $json_obj->id_vendedor;
         }
         
-        if($nome && $descricao) {
+        if($id && $data) {
             
             if($id=="novo") {  //inclui produto
                 $sql = $pdo->prepare(
-                    "INSERT INTO produtos 
-                    (nome, descricao, marca, fornecedor, classificacao, preco_custo, preco_venda, qtde_estoque, qtde_loja)
+                    "INSERT INTO vendas 
+                    (data, id_cliente, id_vendedor)
                     VALUES
-                    ('".$nome."','".$descricao."','".$marca."','".$fornecedor."','".$classificacao."','".$preco_custo."','".$preco_venda."','".$qtde_estoque."','".$qtde_loja."')");
+                    ('".$data."','".$id_cliente."','".$id_vendedor."')");
                 $sql->execute();
 
                 $id = $pdo->lastInsertId();
@@ -55,16 +43,10 @@
                 ];
 
             } else { // altera produto
-                $sql = "UPDATE produtos SET 
-                        nome = '".$nome."',
-                        descricao = '".$descricao."',
-                        marca = '".$marca."',
-                        fornecedor = '".$fornecedor."', 
-                        classificacao = '".$classificacao."',
-                        preco_custo = '".$preco_custo."',
-                        preco_venda = '".$preco_venda."',
-                        qtde_estoque = '".$qtde_estoque."',
-                        qtde_loja = '".$qtde_loja."'";
+                $sql = "UPDATE vendas SET 
+                        data = '".$data."',
+                        id_cliente = '".$id_cliente."',
+                        id_vendedor = '".$id_vendedor."'";
                 $sql .= " WHERE id = ".$id;
 
                 //echo $sql;

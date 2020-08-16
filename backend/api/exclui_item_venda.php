@@ -1,6 +1,6 @@
 <?php
-    //exclui_produto.php
-    //exclui produto, com ID informado, tabela produtos
+    //exclui_item_venda.php
+    //exclui item da venda, com ID informado, tabela vendas_itens
 
     require("config.php");
 
@@ -9,9 +9,8 @@
     if($method === "post") {  
 
         $id = filter_input( INPUT_POST, 'id');
-        $nome = filter_input( INPUT_POST, 'nome');
         
-        if(!($id && $nome)) {
+        if(!($id)) {
             //verifica se vieram em JSON
             //print_r( file_get_contents('php://input') );
             //die;
@@ -19,23 +18,16 @@
             $json_str = file_get_contents('php://input');
             $json_obj = json_decode($json_str);
             $id = $json_obj->id;
-            $nome = $json_obj->nome;
         }
         
-        if($id && $nome) {
-            
-            $sql = "UPDATE produtos SET 
-                    nome = '*del* ".$nome."',
-                    ativo = 'N'";
+        if($id) {
+
+            //exclui item da venda
+            $sql = "DELETE FROM vendas_itens";
             $sql .= " WHERE id = ".$id;
-
-            //echo $sql;
-            //die;
-
             $sql = $pdo->prepare($sql);
             $sql->execute();
-            ;
-
+            
             $array['result'] = [
                 'id' => $id
             ];

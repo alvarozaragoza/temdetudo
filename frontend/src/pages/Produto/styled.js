@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PageArea = styled.div`
-    margin-bottom: 30px;
+    margin-bottom: 120px;
 
     .titulo {
         display: flex;

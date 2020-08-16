@@ -13,3 +13,9 @@ FROM `vendas`
 LEFT JOIN clientes on vendas.id_cliente = clientes.id
 LEFT JOIN vendedores on vendas.id_vendedor = vendedores.id
 LEFT JOIN vw_totais_vendas on vendas.id = vw_totais_vendas.id_venda
+
+-- vw_vendas_itens
+CREATE VIEW vw_vendas_itens AS 
+SELECT vendas_itens.`id`, vendas_itens.`id_venda`, vendas_itens.`id_produto`, produtos.nome as nome_produto, vendas_itens.`preco_venda`, vendas_itens.`qtde` 
+FROM `vendas_itens` 
+LEFT JOIN produtos ON vendas_itens.id_produto = produtos.id

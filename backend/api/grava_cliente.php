@@ -1,45 +1,41 @@
 <?php
-    //exclui_produto.php
-    //exclui produto, com ID informado, tabela produtos
-
+    //grava_cliente.php
+    //grava um novo cliente na tabela clientes
+    
     require("config.php");
 
     $method = strtolower($_SERVER['REQUEST_METHOD']);
 
     if($method === "post") {  
-
-        $id = filter_input( INPUT_POST, 'id');
         $nome = filter_input( INPUT_POST, 'nome');
+        $telefone = filter_input( INPUT_POST, 'telefone');
+        $endereco = filter_input( INPUT_POST, 'endereco');
         
-        if(!($id && $nome)) {
+        if(!($nome && $telefone)) {
             //verifica se vieram em JSON
             //print_r( file_get_contents('php://input') );
             //die;
 
             $json_str = file_get_contents('php://input');
             $json_obj = json_decode($json_str);
-            $id = $json_obj->id;
             $nome = $json_obj->nome;
+            $telefone = $json_obj->telefone;
+            $endereco = $json_obj->endereco;
         }
         
-        if($id && $nome) {
-            
-            $sql = "UPDATE produtos SET 
-                    nome = '*del* ".$nome."',
-                    ativo = 'N'";
-            $sql .= " WHERE id = ".$id;
-
-            //echo $sql;
-            //die;
-
-            $sql = $pdo->prepare($sql);
+        if($nome && $telefone) {
+            $sql = $pdo->prepare(
+                "INSERT INTO clientes
+                (nome, telefone, endereco)
+                VALUES
+                ('".$nome."','".$telefone."','".$endereco."')");
             $sql->execute();
-            ;
 
+            $id = $pdo->lastInsertId();
             $array['result'] = [
                 'id' => $id
             ];
-            
+
         } else {
             $array['error'] = "Campos não enviados";
         }

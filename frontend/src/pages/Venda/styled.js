@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PageArea = styled.div`
-    margin-bottom: 30px;
+    margin-bottom: 130px;
 
     .titulo {
         display: flex;
@@ -17,11 +17,11 @@ export const PageArea = styled.div`
             font-size: 14px;
             text-decoration: none;
             outline: 0;
-            background-color: #FF8100;
             border-radius: 4px;
             color: #FFF;
             padding: 5px 10px;
             margin-left: 30px;
+            background-color: #FF8100;
 
             &:hover {
                 background-color: #E57706;
@@ -37,11 +37,11 @@ export const PageArea = styled.div`
                 font-size: 13px;
                 text-decoration: none;
                 outline: 0;
-                background-color: darkgrey;
                 border-radius: 4px;
                 color: #FFF;
                 padding: 5px 10px;
                 margin-left: 30px;
+                background-color: darkgrey;
 
                 &:hover {
                     background-color: darkseagreen;
@@ -60,11 +60,18 @@ export const PageArea = styled.div`
             display: flex;
             align-items: center;
             padding: 5px;
+            max-width: 600px;
+        }
+
+        .area--extra {
+            display: flex;
+            align-items: center;
+            padding-bottom: 5px;
             max-width: 500px;
         }
 
         .area--title {
-            width: 200px;
+            width: 130px;
             text-align: right;
             padding-right: 20px;
             font-weight: bold;
@@ -106,12 +113,146 @@ export const PageArea = styled.div`
                 &:hover {
                     background-color: #006FCE;
                 }
+            }
 
-                .btnExcluir {
-                    background-color: #00FF00;
-                    margin-left: 10px;
+            .btncinza {
+                background-color: darkgray;
+                &:hover {
+                    background-color: darkseagreen;
                 }
             }
+        }
+
+        .area--input--extra {
+            flex: 1;
+        }
+    }
+
+    .btnNovos {
+        border: 0;
+        text-align: right;
+        outline: 0;
+        padding: 3px 8px;
+        margin-left: 5px;
+        border-radius: 4px;
+        color: #FFF;
+        cursor: pointer;
+
+        background-color: darkgray;
+        font-size: 12px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: darkseagreen;
+        }
+    }    
+
+    .novoCliente, .novoVendedor, .incluirItemVenda {
+        margin-top: 10px;
+        background-color: antiquewhite;
+    }
+
+    .itensVendidos {
+        margin-top: 10px;
+        background-color: lightyellow;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 0px 3px #999;
+    }
+
+    .itens--vendidos {
+        margin-top: 10px;
+        display: flex;
+        text-align: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .item--vendido {
+        min-width: 47%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .incluirItem {
+        margin-top: 10px;
+        background-color: lightyellow;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 0px 3px #999;
+        background-color: antiquewhite;
+    }
+
+    .itensVendidos {
+        margin-top: 10px;
+        background-color: lightyellow;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 0px 3px #999;
+        background-color: lightyellow;
+    }
+
+    .tituloItens {
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        color: darkslategrey;
+    }
+ 
+    .selProduto {
+        flex-basis: 300px;
+    }
+
+    .infoItem {
+        display: flex;
+        margin: 10px;
+        justify-content: space-between;
+
+        .prod--input {
+            input, select {
+                text-align: center;
+                width: 100%;
+                font-size: 14px;
+                padding: 5px;
+                border: 1px solid #DDD;
+                border-radius: 3px;
+                outline: 0;
+                transition: all ease .4s;
+        
+                &:focus {
+                    border: 1px solid #333;
+                    color: #333;
+                }
+
+            }
+
+            button {
+                background-color: #0089FF;
+                border: 0;
+                outline: 0;
+                padding: 5px 10px;
+                border-radius: 4px;
+                color: #FFF;
+                font-size: 15px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #006FCE;
+                }
+            }
+
+            .btncinza {
+                background-color: darkgray;
+                &:hover {
+                    background-color: darkseagreen;
+                }
+            } 
+        }
+
+        .total--item {
+            font-size: 18px;
+            width: 100%;
+            text-align: left;
         }
     }
 

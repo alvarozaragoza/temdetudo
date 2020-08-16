@@ -25,10 +25,10 @@
                     'total_vendido' => $item['total_vendido']
                 ];
             } else {
-                $array['error'] = "Produto não encontrado.";
+                $array['error'] = "Venda não encontrada.";
             }
         } else {
-            $array['error'] = "ID do produto não fornecido.";    
+            $array['error'] = "ID da venda não fornecida.";    
         }
         
     } else {

@@ -80,7 +80,7 @@ export const SearchArea = styled.div`
 `;
 
 export const PageArea = styled.div`
-    margin-bottom: 20px;
+    margin-bottom: 120px;
 
     .titulo {
         display: flex;
