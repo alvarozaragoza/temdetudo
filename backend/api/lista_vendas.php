@@ -8,7 +8,21 @@
 
     if($method === "get") {  
 
-        $sql = $pdo->query("SELECT * FROM vw_vendas ORDER BY data DESC");
+        $filtro = "";
+        if(isset($_GET['dtini'])) {
+            $filtro = " WHERE data>='".$_GET['dtini']."' ";
+        }
+
+        if(isset($_GET['dtfim'])) {
+            if(isset($_GET['dtini'])) {
+                $filtro .= " AND data<='".$_GET['dtfim']."' ";
+            } else {
+                $filtro = " WHERE data<='".$_GET['dtfim']."' ";
+            }
+        }
+
+        $sql = $pdo->query("SELECT * FROM vw_vendas ".$filtro." ORDER BY data DESC");
+
         if($sql->rowCount() > 0) {
             $data = $sql->fetchAll(PDO::FETCH_ASSOC);
             foreach( $data as $item) {
@@ -21,7 +35,8 @@
                     'telefone' => $item['telefone'],
                     'id_vendedor' => $item['id_vendedor'],
                     'nome_vendedor' => $item['nome_vendedor'],
-                    'total_vendido' => $item['total_vendido']
+                    'total_vendido' => $item['total_vendido'],
+                    'total_custo' => $item['total_custo']
                 ];
             }
         }

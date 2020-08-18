@@ -31,7 +31,7 @@ const Page = () => {
                     <div className="searchBox">
                         <form method="GET" action="/">
                             <input type="text" name="q" placeholder="Digite o que procura" />
-                            <button onClick={`window.location.href="/"`}>Limpar Filtro</button>
+                            <button >Limpar Filtro</button>
                         </form>
                     </div>
                 </PageContainer>

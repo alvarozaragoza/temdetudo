@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import { PageArea } from './styled';
 import useApi from '../../helpers/AppAPI';
 import { isLogged } from '../../helpers/AuthHandler';
 
 import { PageContainer, ErrorMessage, AvisoMessage } from "../../components/MainComponents";
-
 import ItensVendaItem from '../../components/partials/ItensVendaItem'
 
 const Page = () => {
@@ -17,7 +19,7 @@ const Page = () => {
     const { id } = useParams();
     
     const [id_venda, setIdVenda] = useState(id);
-    const [data, setData] = useState('');
+    const [data, setData] = useState(new Date());
     const [id_cliente, setIdCliente] = useState('1');
     const [nome_cliente, setNomeCliente] = useState('');
     const [endereco_cliente, setEnderecoCliente] = useState('');
@@ -91,7 +93,7 @@ const Page = () => {
                 let tot_vendido = dados.result.total_vendido == null ? "0,00" : dados.result.total_vendido;
                 tot_vendido = tot_vendido.replace(".",",");
 
-                setData(dados.result.data);
+                setData(new Date(dados.result.data+"T03:00:00Z"));
                 setIdCliente(dados.result.id_cliente);
                 setIdVendedor(dados.result.id_vendedor);
                 setTotalVendido(tot_vendido);
@@ -115,7 +117,8 @@ const Page = () => {
         }
 
         // grava venda
-        const json = await api.gravavenda(id_venda, data, id_cliente, id_vendedor);
+        let strData = data.toISOString().slice(0,10);
+        const json = await api.gravavenda(id_venda, strData, id_cliente, id_vendedor);
 
         if(json.error) {
             setError(json.error);
@@ -334,13 +337,21 @@ const Page = () => {
                     <label className="area">
                         <div className="area--title">Data da Venda</div>
                         <div className="area--input">
+                            <DatePicker
+                                dateFormat="dd/MM/yyyy"
+                                selected={data}
+                                onChange={date => setData(date)}
+                                disabled={disabled}
+                                required
+                            />
+                            {/*}
                             <input 
                                 type="text" 
                                 disabled={disabled}
                                 value={data}
                                 onChange={e=>setData(e.target.value)}
                                 required
-                            />
+                            />*/}
                         </div>
                     </label>
                     <label className="area">
@@ -510,8 +521,7 @@ const Page = () => {
                                     min="0" step="0.01"
                                     disabled={disabled}
                                     value={preco_produto}
-                                    onChangeCapture={e=>atualizaPreco(e.target.value)}
-                                    onCha
+                                    onChange={e=>atualizaPreco(e.target.value)}
                                     required
                                 />
                             </div>

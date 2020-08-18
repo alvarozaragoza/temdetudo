@@ -15,68 +15,64 @@ export const SearchArea = styled.div`
         form {
             flex: 1;
             display: flex;
+            justify-content: space-between;
 
-            input, select {
-                height: 40px;
-                border: 0;
-                border-radius: 5px;
-                outline: 0;
-                font-size: 15px;
-                color: #000;
-                margin-right: 20px; 
+            .filtros {
+                display: flex;
+
+                .textFiltro {
+                    height: 20px;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    margin-top: 7px;
+                }
+
+                input, select, .datepicker {
+                    height: 40px;
+                    border: 0;
+                    border-radius: 5px;
+                    outline: 0;
+                    font-size: 18px;
+                    color: #000;
+                    margin-right: 10px; 
+                }
+
+                input {
+                    flex: 1;
+                    padding: 0 10px;
+                }
+
+                select {
+                    width: 150px;   
+                }
             }
 
-            input {
-                flex: 1;
-                padding: 0 10px;
-            }
+            .btnsFiltros {
+                button {
+                    background-color: #FF8100;
+                    margin-left: 20px;
+                    font-size: 15px;
+                    border: 0;
+                    border-radius: 5px;
+                    color: #FFF;
+                    height: 40px;
+                    padding: 0 20px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    text-decoration: none;
+                    height: 40px;
+                }
 
-            select {
-                width: 150px;   
-            }
-
-            button {
-                background-color: #FF8100;
-                font-size: 15px;
-                border: 0;
-                border-radius: 5px;
-                color: #FFF;
-                height: 40px;
-                padding: 0 20px;
-                cursor: pointer;
-            }
-
-        }
-    }
-
-    .categoryList {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 20px;
-
-        .categoryItem {
-            width: 25%;
-            display: flex;
-            align-items: center;
-            color: #000;
-            text-decoration: none;
-            height: 50px;
-            margin-bottom: 10px; 
-
-            &:hover {
-                color: #999;
-            }
-
-            img {
-                width: 45px;
-                height: 45px;
-                margin-right: 10px;
+                .btnCinza {
+                    background-color: #3c5e5e;
+                }
             }
 
         }
+
     }
-
-
 `;
 
 export const PageArea = styled.div`
@@ -89,12 +85,13 @@ export const PageArea = styled.div`
     }
     
     h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     a {
         border: 0;
-        font-size: 14px;
+        font-size: 15px;
+        font-weight: bold;
         text-decoration: none;
         outline: 0;
         background-color: #FF8100;
@@ -104,7 +101,14 @@ export const PageArea = styled.div`
         margin-left: 30px;
 
         &:hover {
-            background-color: #E57706;
+            background-color: darkorange;
+        }
+    }
+    
+    .btnAnalise {
+        background-color: purple;
+        &:hover {
+            background-color: darkviolet;
         }
     }
 
@@ -122,9 +126,9 @@ export const PageArea = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 15px;
+        margin-top: 18px;
         margin-left: 14px;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: bold;
         color: darkgrey;
     }

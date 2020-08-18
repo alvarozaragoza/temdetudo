@@ -44,8 +44,8 @@ const apiFetchGet = async (endpoint, comParam = false, body = []) => {
     const json = await res.json();
 
     if(json.error) {
-        //alert(json.error);
-        window.location.href = '/';
+        alert(json.error);
+        //window.location.href = '/';
         return;
     }
 
@@ -93,9 +93,12 @@ const AppAPI = {
         return json;
     },
 
-    getVendas: async () => {
+    getVendas: async (dtini, dtfim) => {
+        let dt_ini = dtini.toISOString().slice(0,10);
+        let dt_fim = dtfim.toISOString().slice(0,10);
         const json = await apiFetchGet(
-            '/lista_vendas.php'
+            '/lista_vendas.php?dtini='+dt_ini+"&dtfim="+dt_fim,
+            true //com param
         );
         return json;
     },

@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn/index.js';
 import Produto from './pages/Produto/index.js';
 import Vendas from './pages/Vendas/index.js';
 import Venda from './pages/Venda/index.js';
+import Analise from './pages/Analise/index.js';
 
 export default () => {
     return (
@@ -20,13 +21,15 @@ export default () => {
             <Route path="/prod/:id">
                 <Produto />
             </Route>
-            <Route exact path="/vendas">
-                <Vendas />
-            </Route>
             <Route path="/venda/:id">
                 <Venda />
             </Route>
-            
+            <Route exact path="/vendas">
+                <Vendas />
+            </Route>
+            <Route exact path="/analise">
+                <Analise />
+            </Route>
             <Route>
                 <NotFound />
             </Route>
