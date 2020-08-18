@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import qs from 'qs';
 
-const BASEAPI = 'http://localhost/temdetudo/backend/api';
+const BASEAPI = 'http://ibm-temdetudo.16mb.com/backend/api';
 
 const apiFetchPost = async (endpoint, body) => {
     if(!body.token) {

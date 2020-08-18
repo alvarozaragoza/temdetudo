@@ -14,15 +14,31 @@ const Page = () => {
     const api = useApi();
 
     const [produtos, setProdutos] = useState([]);
+    const [produtosAll, setProdutosAll] = useState([]);
     const [filtro, setFiltro] = useState('');
     
     useEffect(()=>{
         const getProdutos = async () => {
             const prods = await api.getProdutos();
             setProdutos(prods.result);
+            setProdutosAll(prods.result);
         }
         getProdutos();
     },[]);
+
+    useEffect(()=>{
+        let produs = [];
+        produtosAll.forEach(produto => {
+            if(produto.nome.toLowerCase().includes(filtro.toLowerCase())) {
+                produs.push(produto);
+            }
+        });
+        if(produs==[]) {
+            alert("Nenhum produto encontrado.");
+        } else {
+            setProdutos(produs);
+        }
+    }, [filtro]);
 
     return (
         <>
@@ -30,7 +46,10 @@ const Page = () => {
                 <PageContainer>
                     <div className="searchBox">
                         <form method="GET" action="/">
-                            <input type="text" name="q" placeholder="Digite o que procura" />
+                            <input type="text" 
+                                placeholder="Digite o que procura" 
+                                onChange={e=>setFiltro(e.target.value)}
+                            />
                             <button >Limpar Filtro</button>
                         </form>
                     </div>
@@ -49,6 +68,7 @@ const Page = () => {
                             <ProdItem key={k} data={i} />
                         )}
                     </div>
+                    
                     {logged &&
                         <div className="rodape">[ clique no produto para editar ou excluir ]</div>
                     }

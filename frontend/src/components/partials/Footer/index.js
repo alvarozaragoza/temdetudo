@@ -15,7 +15,7 @@ const Footer = () => {
                 <div>
                     <a href="https://wa.me/5511973708569" target="_blank"><strong>Loja TEMdeTudo</strong></a>
                     <br/>
-                    <a href="https://wa.me/5511973708569" target="_blank"><small>...clique aqui e faça seu pedido por Whatsapp...</small></a>
+                    <a href="https://wa.me/5511973708569" target="_blank">...clique aqui e faça seu pedido por Whatsapp...</a>
                 </div>
             }
         </FooterArea>

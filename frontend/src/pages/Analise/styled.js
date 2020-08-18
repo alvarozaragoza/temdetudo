@@ -98,7 +98,6 @@ export const PageArea = styled.div`
         text-align: left;
     }
     
-
     .block-cli {
         height: 300px;
         background-color: #ffe6cc;
@@ -135,16 +134,5 @@ export const PageArea = styled.div`
         font-size: 20px;
         margin-left: 1%;
     }
-
-    
-    .block-vend {
-        height: 300px;
-        background-color: #ffe6cc;
-        width: 48%;
-        margin: 1%;
-        border-radius: 5px;
-    }
-    
-    
    
 `;
