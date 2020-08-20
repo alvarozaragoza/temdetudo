@@ -21,7 +21,7 @@ export const SearchArea = styled.div`
                 display: flex;
 
                 .textFiltro {
-                    height: 20px;
+                    height: 18px;
                     color: white;
                     font-size: 18px;
                     font-weight: bold;
@@ -30,6 +30,7 @@ export const SearchArea = styled.div`
                 }
 
                 input, select, .datepicker {
+                    width: 120px;
                     height: 40px;
                     border: 0;
                     border-radius: 5px;
@@ -73,6 +74,49 @@ export const SearchArea = styled.div`
         }
 
     }
+
+    @media(max-width: 600px) {
+        .searchBox {
+            padding: 10px;
+            form {
+                flex-direction: column;
+                
+                .filtros {
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: center;
+                    .textFiltro {
+                        margin-right: 4px;
+                        margin-left: 4px;
+                        font-size: 13px;
+                        height: 30px;
+                    }
+                    input, select, .datepicker {
+                        font-size: 14px;
+                        width: 100px;
+                        height: 30px;
+                        margin-right: 4px;
+                        margin-left: 4px;
+                        
+                    }
+                }
+
+                .btnsFiltros {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-top: 5px;
+                    
+                    button {
+                        background-color: #3c5e5e;
+                        font-size: 14px;
+                        font-weight: normal;
+                        height: 30px;
+                        margin-left: 0px;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const PageArea = styled.div`
@@ -82,6 +126,10 @@ export const PageArea = styled.div`
         display: flex;
         align-items: center;
         margin-left: 14px;
+    }
+
+    .btnsVendas{
+        display: flex;
     }
     
     h2 {
@@ -131,6 +179,47 @@ export const PageArea = styled.div`
         font-size: 18px;
         font-weight: bold;
         color: darkgrey;
+    }
+
+    @media(max-width: 600px) {
+        .titulo {
+            margin-left: 10px;
+            display: flex;
+            justify-content: space-between;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+
+        .btnsVendas{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 70px;
+            align-items: stretch;
+        }
+
+        a {
+            width: 100px;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 10px;
+            .btnAnalise {
+                margin-top: 10px;
+            }
+        }
+        .btnAnalise {
+            margin-top: 10px;
+        }
+
+        .rodape {
+            font-size: 14px;
+            margin-left: 0px;
+        }
+
+        @media(max-width:600px) {
+            
+        }
+        
     }
     
 `;
@@ -202,6 +291,29 @@ export const VendasCabec = styled.div`
         overflow: hidden;
         text-align: right;
         width: 13%;
+    }
+
+    @media(max-width: 600px) {
+        height: 2px;
+        .itemData {
+            display: none;
+        }
+
+        .itemNomeCliente {
+            display: none;
+        }
+
+        .itemDadosCliente {
+            display: none;
+        }
+
+        .itemVendedor {
+            display: none;
+        }
+
+        .itemValor {
+            display: none;
+        }
     }
    
 `;

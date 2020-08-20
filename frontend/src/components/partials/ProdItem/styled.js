@@ -11,7 +11,7 @@ a {
     color: #000;
     background-color: #FFF;
     transition: all ease .2s;
-    height: 115px;
+    height: 145px;
 
     &:hover {
         background-color: #EEE;
@@ -22,6 +22,17 @@ a {
     .itemImage img {
         width: 100%;
         border-radius: 5px;
+    }
+
+    .itemClass {
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        height: 25px;
+        max-height: 25px;
+        overflow: hidden;
+        text-align: right;
+        color: purple;
     }
 
     .itemNome {

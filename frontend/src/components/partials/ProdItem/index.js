@@ -18,6 +18,7 @@ export default (props) => {
         <Item className="proditem">
             {logged &&
                 <Link to={`/prod/${props.data.id}`}> 
+                    <div className="itemClass">{props.data.classificacao}</div>
                     <div className="itemNome">{props.data.nome}</div>
                     <div className="itemDesc">{props.data.descricao}</div>
                     <div className="itemPreco">{preco}</div>
@@ -25,6 +26,7 @@ export default (props) => {
             }
             {!logged &&
                 <Link to="/"> 
+                    <div className="itemClass">{props.data.classificacao}</div>
                     <div className="itemNome">{props.data.nome}</div>
                     <div className="itemDesc">{props.data.descricao}</div>
                     <div className="itemPreco2">{preco}</div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,6 +17,7 @@ const Page = () => {
 
     const api = useApi();
     const { id } = useParams();
+    const history = useHistory();
     
     const [id_venda, setIdVenda] = useState(id);
     const [data, setData] = useState(new Date());
@@ -127,9 +128,8 @@ const Page = () => {
             if(id_venda=="novo") {
                 setAviso("Venda gravada! Itens vendidos podem ser informados agora.");
                 setIdVenda(json.result.id);
-
             } else {
-                window.location.href = '/vendas';
+                history.push("/vendas");
             }
             
         }
@@ -213,7 +213,7 @@ const Page = () => {
             if(json.error) {
                 setError(json.error);
             } else {
-                window.location.href = '/vendas';
+                history.push("/vendas");
             }
         }
     }
@@ -335,7 +335,7 @@ const Page = () => {
 
                 <form onSubmit={handleSubmit}>
                     <label className="area">
-                        <div className="area--title">Data da Venda</div>
+                        <div className="area--title">Data</div>
                         <div className="area--input">
                             <DatePicker
                                 dateFormat="dd/MM/yyyy"
@@ -430,7 +430,7 @@ const Page = () => {
                         <label className="area">
                             <div className="area--title"></div>
                             <div className="area--input">
-                                <button disabled={disabled}>Incluir Cliente</button>
+                                <button disabled={disabled}><strong>Incluir</strong></button>
                             </div>
                             <div className="area--input">
                                 <button className="btncinza" disabled={disabled} onClick={()=>setShowFormCli(false)} >Cancelar</button>
@@ -462,7 +462,7 @@ const Page = () => {
                         <label className="area">
                             <div className="area--title"></div>
                             <div className="area--input">
-                                <button disabled={disabled}>Incluir Vendedor</button>
+                                <button disabled={disabled}><strong>Incluir</strong></button>
                             </div>
                             <div className="area--input">
                                 <button className="btncinza" disabled={disabled} onClick={()=>setShowFormVend(false)} >Cancelar</button>
@@ -495,45 +495,48 @@ const Page = () => {
                     <div className="incluirItem">
                         <div className="tituloItens">Preencha os dados abaixo para incluir item na Venda</div>
                         <div className="infoItem">
-                            <div className="prod--input selProduto">
-                                {/*<select value={id_produto} onChange={e=>setIdProduto(e.target.value)}>*/}
-                                <select value={id_produto} onChange={e=>atualizaItem(e.target.value)}>
-                                    <option key="0" value="0">Escolha um produto</option>
-                                    {produtos.map((i,k)=>
-                                        <option key={k} value={i.id} >{i.nome}</option>
-                                    )}
-                                </select> 
-                            </div>
-                            <div className="prod--input">
-                                <input
-                                    type="number" 
-                                    min="1" step="1"
-                                    disabled={disabled}
-                                    value={qtde_produto}
-                                    onChange={e=>atualizaQtde(e.target.value)}                                
-                                    required
-                                />
-                            </div>
-                            <div>x</div>
-                            <div className="prod--input">
-                                <input
-                                    type="number"
-                                    min="0" step="0.01"
-                                    disabled={disabled}
-                                    value={preco_produto}
-                                    onChange={e=>atualizaPreco(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <div>=</div>
-                            <div className="prod--input">
-                                <div className="total--item">
-                                    {total_item}
+                            
+                                <div className="prod--input selProduto">
+                                    {/*<select value={id_produto} onChange={e=>setIdProduto(e.target.value)}>*/}
+                                    <select value={id_produto} onChange={e=>atualizaItem(e.target.value)}>
+                                        <option key="0" value="0">Escolha um produto</option>
+                                        {produtos.map((i,k)=>
+                                            <option key={k} value={i.id} >{i.nome}</option>
+                                        )}
+                                    </select> 
                                 </div>
-                            </div>
-                            <div className="prod--input">
-                                <button className="btnIncluiProd" onClick={handleSubmitItem}>Incluir</button>
-                            </div>
+                                <div className="prod--input">
+                                    <input
+                                        type="number" 
+                                        min="1" step="1"
+                                        disabled={disabled}
+                                        value={qtde_produto}
+                                        onChange={e=>atualizaQtde(e.target.value)}                                
+                                        required
+                                    />
+                                </div>
+                                <div className="operVezes">x</div>
+                                <div className="prod--input">
+                                    <input
+                                        type="number"
+                                        min="0" step="0.01"
+                                        disabled={disabled}
+                                        value={preco_produto}
+                                        onChange={e=>atualizaPreco(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className="operIgual">=</div>
+                                <div className="prod--input center">
+                                    <div className="total--item center">
+                                        {total_item}
+                                    </div>
+                                </div>
+                            
+                                <div className={`prod--input center`}>
+                                    <button className="btnIncluiProd" onClick={handleSubmitItem}>Incluir</button>
+                                </div>
+                            
                         </div>
                     </div>
                 }

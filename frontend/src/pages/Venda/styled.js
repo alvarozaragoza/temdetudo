@@ -256,4 +256,75 @@ export const PageArea = styled.div`
         }
     }
 
+@media(max-width: 600px) {
+    .titulo {
+        margin-left: 5px;
+        
+        h2 {
+            font-size: 16px;
+        }
+
+        button {
+            font-size: 14px;
+            margin-left: 20px;
+        }
+
+        .btncinza {
+            a {
+                margin-left: 12px;
+            }
+        }
+    }
+
+    form {
+       .area--title {
+            width: 80px;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+    }
+
+    .btnNovos {
+        font-size: 11px;
+        font-weight: normal;
+        max-width: 50px;
+        line-height: 12px;
+    }    
+
+    .item--vendido {
+        min-width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .selProduto {
+        flex-basis: 40px;
+    }
+
+    .operIgual {
+        text-align: center;
+        color: orange;
+    }
+
+    .operVezes {
+        text-align: center;
+        color: orange;
+    }
+
+    .infoItem {
+        flex-direction: column;
+    }
+
+    .infoItem {
+        .total--item {
+            text-align: center;
+            width: auto;
+            margin-bottom: 10px;
+        }
+    }
+
+    .center {
+        text-align: center;
+    }
+}
 `;

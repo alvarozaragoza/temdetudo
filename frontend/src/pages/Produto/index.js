@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { PageArea } from './styled';
 import useApi from '../../helpers/AppAPI';
 import { isLogged } from '../../helpers/AuthHandler';
@@ -13,6 +13,7 @@ const Page = () => {
 
     const api = useApi();
     const { id } = useParams();
+    const history = useHistory();
 
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -70,7 +71,7 @@ const Page = () => {
         if(json.error) {
             setError(json.error);
         } else {
-            window.location.href = '/';
+            history.push("/");
         }
         
         setDisabled(false);

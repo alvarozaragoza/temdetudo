@@ -28,8 +28,10 @@ const Page = () => {
 
     useEffect(()=>{
         let produs = [];
+        let concat = "";
         produtosAll.forEach(produto => {
-            if(produto.nome.toLowerCase().includes(filtro.toLowerCase())) {
+            concat = produto.nome + produto.descricao + produto.classificacao;
+            if(concat.toLowerCase().includes(filtro.toLowerCase())) {
                 produs.push(produto);
             }
         });

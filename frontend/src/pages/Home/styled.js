@@ -6,7 +6,7 @@ export const SearchArea = styled.div`
     padding: 20px 0;
 
     .searchBox {
-        background-color: #9BB83C;
+        background-color: darkcyan;
         padding: 20px 15px;
         border-radius: 5px;
         box-shadow: 1px 1px 1px 0.3px rgba(0,0,0,0.2);
@@ -128,6 +128,17 @@ export const PageArea = styled.div`
         color: darkgrey;
     }
     
-    
+    @media (max-width: 600px) {
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+
+        .proditem {
+            width: 100%;
+        }
+    }
+
+    }
     
 `;

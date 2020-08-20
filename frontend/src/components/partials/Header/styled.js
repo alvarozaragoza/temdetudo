@@ -80,4 +80,61 @@ export const HeaderArea = styled.div`
 
     }
 
+@media (max-width: 600px) {
+
+    & {
+        height: auto;
+    }
+    
+    .container {
+        flex-direction: column;
+    }
+    
+    .logo {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .navi ul {
+        justify-content: center;
+        margin:0;
+        padding:0;
+        
+        li {
+            margin: 10px;
+        
+            a {
+                color: #000;
+                background-color: #FFF;
+                &:hover {
+                    color: #999;
+                    background-color: #FFF;
+                }
+            }
+            button {
+                color: #000;
+                background-color: #FFF;
+                &:hover {
+                    color: #999;
+                    background-color: #FFF;
+                }
+                &.button {
+                    padding: 0px 0px;
+                }
+            }
+            .button {
+                color: #000;
+                background-color: #FFF;
+                &:hover {
+                    color: #999;
+                    background-color: #FFF;
+                }
+            }
+            
+        }
+    }
+
+
+
+}
 `;

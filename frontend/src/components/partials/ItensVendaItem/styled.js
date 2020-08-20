@@ -65,6 +65,29 @@ export const Item = styled.div`
         }
     }
 
+    @media(max-width:600px) {
+        .itemProduto {
+            font-size: 12px;
+            font-weight: normal;
+            margin-right: 4px;
+        }
+
+        .itemPreco {
+            display: none;
+        }
+
+        .itemTotal {
+            text-align: right;
+            font-size: 12px;
+            margin-right: 6px;
+        }
+
+        button {
+            font-size: 10px;
+            
+        }
+    }
+
 `;
 
 

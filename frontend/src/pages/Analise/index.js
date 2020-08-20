@@ -19,12 +19,12 @@ const Page = () => {
 
     let cookieDtIni = Cookies.get('dtIni');
     if(!cookieDtIni) {
-        window.location.href = '/vendas';
+        window.location.href = '/';
     }
 
     let cookieDtFim = Cookies.get('dtFim');
     if(!cookieDtFim) {
-        window.location.href = '/vendas';
+        window.location.href = '/';
     }
 
     // datas no formato BRASIL

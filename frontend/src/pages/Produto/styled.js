@@ -133,4 +133,34 @@ export const PageArea = styled.div`
         }
     }
 
+    @media(max-width: 600px) {
+        .titulo {
+            h2 {
+                font-size: 15px;
+                margin-right: 5px;
+            }
+            a {
+                font-size: 13px;
+                margin-left: 15px;
+                
+            }
+            button {
+                    font-size: 13px;
+                    margin-left: 15px;
+            }
+            .btnCinza {
+                a {
+                    font-size: 13px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        form {
+            .area--title {
+                width: 100px;
+            }
+        }
+    
+    }
+
 `;

@@ -10,6 +10,11 @@ export const SearchArea = styled.div`
         color: purple;
         text-align: center;
     }
+    @media(max-width: 600px) {
+        .titulo--analise {
+            font-size: 18px;
+        }
+    }
 `;
 
 export const PageArea = styled.div`
@@ -134,5 +139,62 @@ export const PageArea = styled.div`
         font-size: 20px;
         margin-left: 1%;
     }
+
+@media(max-width: 600px) {
+    .totv-1{
+        font-size: 15px;
+    }
+
+    .totv-2{
+        font-size: 17px;
+    }
+    
+    .totc-1{
+        font-size: 15px;
+    }
+
+    .totc-2{
+        font-size: 17px;
+    }
+
+    .lucr-1{
+        font-size: 17px;
+    }
+
+    .lucr-2{
+        font-size: 19px;
+    }
+
+    .mark-1{
+        font-size: 12px;
+    }
+
+    .mark-2{
+        font-size: 12px;
+        margin-left: 1%;
+    }
+
+    .totais{
+        margin-top: 20px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;    
+    }
+
+    .block-cli {
+        width: 100%;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .cli-1{
+        font-size: 16px;
+    }
+
+    .cli-2{
+        font-size: 16px;
+    }    
+}
    
 `;

@@ -1,9 +1,12 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { Item } from './styled';
 
 import useApi from '../../../helpers/AppAPI';
 
 export default (props) => {
+    const history = useHistory();
+
     let valor = "";
     valor = props.data.preco_venda;
     valor = valor!=null ? valor : "0.00";
@@ -34,7 +37,8 @@ export default (props) => {
             if(json.error) {
                 alert(json.error);
             } else {
-                window.location.href = '/venda/'+id_venda;
+                alert('Item da venda foi excluído. Atualize a página.');
+                //history.go(0);
             }
         }
     }

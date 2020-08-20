@@ -77,6 +77,28 @@ a {
         background-color: antiquewhite;
     }
 
+    @media(max-width:600px) {
+        .itemData {
+            width: 34%;
+        }
+
+        .itemNomeCliente {
+            width: 33%;
+        }
+
+        .itemDadosCliente {
+            display: none;
+        }
+
+        .itemVendedor {
+            display: none;
+        }
+
+        .itemValor {
+            width: 33%;
+        }
+    }
+
 }
 
 `;

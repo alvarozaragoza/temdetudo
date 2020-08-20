@@ -1,7 +1,8 @@
 import Cookies from 'js-cookie';
 import qs from 'qs';
 
-const BASEAPI = 'http://ibm-temdetudo.16mb.com/backend/api';
+//const BASEAPI = 'http://ibm-temdetudo.16mb.com/backend/api';
+const BASEAPI = 'https://denzar.com.br/backend/api';
 
 const apiFetchPost = async (endpoint, body) => {
     if(!body.token) {
@@ -45,7 +46,6 @@ const apiFetchGet = async (endpoint, comParam = false, body = []) => {
 
     if(json.error) {
         alert(json.error);
-        //window.location.href = '/';
         return;
     }
 

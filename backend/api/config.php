@@ -11,8 +11,8 @@
 
     /*hostinger*/
     $db_host = "mysql.hostinger.com.br";
-    $db_name = "u107608299_ibm";
-    $db_user = "u107608299_ibm";
+    $db_name = "u778434393_ibm";
+    $db_user = "u778434393_ibm";
     $db_pass = "TemDeTudo123";
     
     $pdo = new PDO("mysql:dbname=$db_name;host=$db_host", $db_user, $db_pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

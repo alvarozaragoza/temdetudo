@@ -115,8 +115,10 @@ const Page = () => {
                 <PageArea>
                     <div className="titulo">
                         <div><h2>Vendas</h2></div>
-                        <div><Link to="venda/novo">Incluir nova Venda</Link></div>
-                        <div><Link to="/analise" className="btnAnalise">Análise das Vendas</Link></div>
+                        <div className="btnsVendas">
+                            <div><Link to="venda/novo">Incluir nova Venda</Link></div>
+                            <div><Link to="/analise" className="btnAnalise">Análise das Vendas</Link></div>
+                        </div>
                     </div>
                     <div className="list">
                         <VendasCabec>
