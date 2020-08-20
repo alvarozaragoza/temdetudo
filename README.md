@@ -7,4 +7,4 @@ BACKEND:  PHP + MySQL
 
 FRONTEND: REACT JS
 
-(atualizado em 15.08.2020)
+(atualizado em 19.08.2020)
