@@ -37,8 +37,8 @@ export default (props) => {
             if(json.error) {
                 alert(json.error);
             } else {
-                alert('Item da venda foi excluído. Atualize a página.');
-                //history.go(0);
+                //alert('Item da venda foi excluído. Atualize a página.');
+                history.push("/venda/"+id_venda);
             }
         }
     }
